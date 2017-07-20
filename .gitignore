@@ -1,0 +1,10 @@
+ignore
+.sass-cache
+node_modules
+.DS_Store
+bower_components
+public/css/style-ar.css
+public/css/style-en.css
+public/css/responsive-ar.css
+public/css/responsive-en.css
+public/js/
