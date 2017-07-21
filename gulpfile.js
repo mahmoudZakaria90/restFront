@@ -24,7 +24,7 @@ gulp.task('sass', function () {
 //watch 
 gulp.task('watch',function(){
 	gulp.watch(['./src/sass/*.sass', './src/sass/**/*.sass'],['sass']);
-	gulp.watch('./src/js/**/*.js',['JS', reload]);
+	gulp.watch(['./src/js/*.js', './src/js/**/*.js'],['JS', reload]);
 	gulp.watch('./public/*.html', function(){log.log(log.colors.green('HTML Updated!'))});
 	gulp.watch(['./public/*.html','./public/css/*.css','./public/js/*.js'], reload);
 })
