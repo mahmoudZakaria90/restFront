@@ -24,35 +24,15 @@ gulp.task('sass', function () {
 //watch 
 gulp.task('watch',function(){
 	gulp.watch(['./src/sass/*.sass', './src/sass/**/*.sass'],['sass']);
-	gulp.watch('./src/js/**/*.js',['bundle','uglify','hint']);
+	gulp.watch('./src/js/**/*.js',['JS', reload]);
 	gulp.watch('./public/*.html', function(){log.log(log.colors.green('HTML Updated!'))});
 	gulp.watch(['./public/*.html','./public/css/*.css','./public/js/*.js'], reload);
 })
 
-//bundle
-gulp.task('bundle', function(){
-	return rollup.rollup({
-    entry: "./src/js/main.js",
-    plugins: [
-      resolve(),
-      babel({
-      	exclude: 'node_modules/**',
-      	presets: [
-      		["es2015", {
-      			modules: false
-      		}]
-      	]
-      })
-    ]
-  })
-    .then(function (bundle) {
-      bundle.write({
-        format: "cjs",
-        moduleName: "main",
-        dest: "./public/js/main.js",
-        sourceMap: false
-      });
-    })
+//JS
+gulp.task('JS', function(){
+  gulp.src('./src/js/*.js')
+  .pipe(gulp.dest('./public/js/'))
 })
 
 //CSS minify
@@ -98,4 +78,4 @@ gulp.task('serve',function(){
 
 
 //default
-gulp.task('default',['serve','sass','bundle','uglify','hint','watch'])
+gulp.task('default',['serve','sass','JS','watch'])

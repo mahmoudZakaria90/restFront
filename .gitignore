@@ -3,8 +3,7 @@ ignore
 node_modules
 .DS_Store
 bower_components
-public/css/style-ar.css
-public/css/style-en.css
+src/sass/
 public/css/responsive-ar.css
 public/css/responsive-en.css
 public/js/

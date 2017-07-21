@@ -3,12 +3,12 @@
 	//DOM
 	const app = document.getElementById('app');
 	const appForm = document.getElementById('app-form');
-	const appName = document.getElementById('app-name');
+	const appSelect = document.getElementById('app-select');
 	const appRank = document.getElementById('app-rank');
 	const check = document.getElementById('check');
 	const loadingBars = document.querySelector('.equlizer');
 
-	let appNameVal;
+	let appSelectVal;
 	let appRankVal;
 
 	let initURL;
@@ -18,11 +18,11 @@
 	//Store
 	function store(e){
 		if (e.target.id === "app-name") {
-			appNameVal = e.target.value;
+			appSelectVal = e.target.value;
 		} else {
 			appRankVal = parseInt(e.target.value)
 		}
-		initURL = `http://localhost:4000/api/ninja?name=${appNameVal}&rank=${appRankVal}`;
+		initURL = `http://localhost:4000/api/ninja?name=${appSelectVal}&rank=${appRankVal}`;
 		requestURL = initURL;
 	}
 
@@ -37,14 +37,14 @@
 	//Checkbox 
 	function checkbox() {
 		if(this.checked){
-			appName.setAttribute('disabled', 'disabled');
+			appSelect.setAttribute('disabled', 'disabled');
 			appRank.setAttribute('disabled', 'disabled');
 			requestURL = `http://localhost:4000/api/ninja`;
-			appName.value = '';
+			appSelect.value = '';
 			appRank.value = '';
 			app.innerHTML = '';
 		}else {
-			appName.removeAttribute('disabled');
+			appSelect.removeAttribute('disabled');
 			appRank.removeAttribute('disabled');
 			requestURL = initURL ;
 			app.innerHTML = '';
@@ -67,7 +67,7 @@
 	}
 
 	//Events
-	appName.addEventListener('keyup', store);
+	appSelect.addEventListener('keyup', store);
 	appRank.addEventListener('keyup', store);
 
 	appForm.addEventListener('submit', fetching);
