@@ -32,7 +32,7 @@
 		console.log(result)
 		loadingBars.style.display = 'none';
 		app.style.padding = 0;
-		app.innerHTML += `<li><span><strong>Name:</strong> ${result.name}</span>, <span><strong>Rank:</strong> ${result.rank}</span> <span class='${result.available} state' ></span></li>`
+		app.innerHTML += `<li><span><strong>Name:</strong> ${result.name}</span> <span><strong>Rank:</strong> ${result.rank}</span> <span class='${result.available} state' ></span></li>`
 	}
 
 
